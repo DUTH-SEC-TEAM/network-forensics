@@ -11,7 +11,7 @@
 | [Packet Capture](./packet-capture/README.md) | Capture and record raw network traffic | Wireshark, tcpdump, tshark |
 | [Traffic Analysis](./traffic-analysis/README.md) | Analyze and interpret captured traffic | Zeek, NetworkMiner, ntopng |
 | [IDS/IPS](./IDS-IPS/README.md) | Detect and prevent network intrusions | Snort, Suricata |
-| [Network Forensic Analysis](./network-forensic-analysis/README.md) | Deep forensic investigation of network data | Xplico, Volatility, NetworkMiner |
+| [Network Forensic Analysis](./network-forensic-analysis/README.md) | Deep forensic investigation of network data | Xplico, NetworkMiner |
 | [SIEM](./SIEM/README.md) | Centralize and correlate security logs | Splunk, ELK Stack, Wazuh |
 
 ---
