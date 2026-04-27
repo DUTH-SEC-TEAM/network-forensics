@@ -30,7 +30,7 @@
 
 Each tool entry should follow the format in [_TEMPLATE.md](./_TEMPLATE.md).
 
-test2
+test3
 
 ---
 
