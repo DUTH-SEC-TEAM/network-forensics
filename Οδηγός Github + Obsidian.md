@@ -181,10 +181,10 @@ git push origin main
 	-  Windows ->   `C:\Users\Username\DUTH-TEAM\REPO_NAME
 	- Linux / Mac -> `~/DUTH-TEAM/REPO_NAME`
 
-## Βήμα 7: Εγκατάσταση Obsidian Git Plugin
+## Βήμα 7: Εγκατάσταση  Git Plugin
 
 1. **Settings → Community plugins → Turn on community plugins**
-2. **Browse → αναζήτησε "Obsidian Git" → Install → Enable**
+2. **Browse → αναζήτησε "Git" → Install → Enable**
 3. Ρυθμίσεις plugin:
 
 | Ρύθμιση                 | Τιμή                                                                        |
