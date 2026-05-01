@@ -87,7 +87,8 @@ Get-Content "$HOME\.ssh\id_ed25519_github_team.pub"
 
 ### Επαλήθευση σύνδεσης
 
-**Linux**
+#### Linux
+
 ```bash
 ssh -T git@github.com -i ~/.ssh/id_ed25519_github_team
 ```
@@ -96,8 +97,10 @@ ssh -T git@github.com -i ~/.ssh/id_ed25519_github_team
 ##### SSH
 
 ```Shell
-ssh -T git@github.com -i C:\Users\[username]\.ssh\id_ed25519_github_team
+ssh -T git@github.com -i C:/Users/[username]/.ssh/id_ed25519_github_team
 ```
+
+
 
 
 **Σωστό αποτέλεσμα:** `Hi [username]! You've successfully authenticated, but GitHub does not provide shell access.`
