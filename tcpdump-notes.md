@@ -183,7 +183,7 @@ Timestamp       Πρ Source IP:port       Dest IP:port       Πληροφορί�
 ```
 11:36:26.353797 IP 192.168.1.241.45296 > 192.241.182.146.443: Flags [.], ack 2291349910, win 319, length 0
                                                                └──────┘   └──────────┘   └──────┘  └──────┘
-                                                               TCP Flag   Ack number     Window    Μέγεθος
+                                                               TCP Flag   Ack   number     Window    Μέγεθος
                                                                (. = ACK)                size      payload
 ```
 
