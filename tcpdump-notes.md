@@ -77,7 +77,7 @@ sudo tcpdump
 - **Port** = η "πόρτα" της εφαρμογής (π.χ. `:80` = HTTP, `:443` = HTTPS, `:53` = DNS)
 - Ένα packet πηγαίνει από `IP:port` → `IP:port`
 
-### Network Interface
+### Network Interface_
 
 Ο υπολογιστής σου έχει πολλά "αυτιά" για το δίκτυο:
 - `eth0` / `ens3` — καλωδιακή σύνδεση
