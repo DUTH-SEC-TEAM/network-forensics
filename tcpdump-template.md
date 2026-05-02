@@ -4,15 +4,15 @@
 
 # Metadata
 
-| Field            | Value                                        |
-| ---------------- | -------------------------------------------- |
+| Field            | Value                                                   |
+| ---------------- | ------------------------------------------------------- |
 | **Category**     | `network-forensics / traffic-analysis / packet-capture` |
-| **Platform**     | Linux / macOS / BSD / Cross-platform         |
-| **Language**     | C                                            |
-| **License**      | BSD-3-Clause                                 |
-| **Version**      | 4.99.x (latest)                              |
-| **Authors**      | The Tcpdump Group                            |
-| **Last updated** | 02-05-2025                                   |
+| **Platform**     | Linux                                                   |
+| **Language**     | C                                                       |
+| **License**      | -                                                       |
+| **Version**      | 1.1 (latest)                                            |
+| **Authors**      | Panagiotis Michalitsios                                 |
+| **Last updated** | 02-05-2025                                              |
 
 ---
 
