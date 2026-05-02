@@ -1,3 +1,12 @@
+| Field            | Value                                  |
+| ---------------- | -------------------------------------- |
+| **Category**     | `network-forensics / traffic-analysis` |
+| **Platform**     | Linux                                  |
+| **Language**     | tcpdump                                |
+| **License**      | -                                      |
+| **Version**      | 1.0                                    |
+| **Authors**      | Panagiotis Michalitsios                |
+| **Last updated** | 02/05/2026                             |
 # 🔬 tcpdump — Σημειώσεις
 
 > **tcpdump** = command-line packet analyzer (packet sniffer) για ανάλυση TCP/IP traffic σε network interfaces.  
