@@ -41,6 +41,8 @@ pip install <toolname>
 
 > [!warning] 
 >  **If the tool is CLI-based,** fill in this section.
+
+> [!WARNING]
 >  **If the tool is GUI-based**, delete this section and keep only the **Analysis** section below
 
 ```bash
