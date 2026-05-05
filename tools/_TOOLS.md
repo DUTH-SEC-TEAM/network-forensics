@@ -18,11 +18,18 @@
 
 ## How to Contribute
 
+### On the fly 
+
 1. Go to the category folder that matches your tool
 2. Click **"Add file" → "Create new file"**
 3. Use the [_TEMPLATE.md](TEMPLATE.md) as your starting point
 4. Name your file `toolname.md`
 5. Add your tool to the category's `toolcategoryname.md` table
+
+### Local Workflow
+
+Some details can be found in [[Οδηγός Github + Obsidian]] under the Workflow section.
+> A more advanced and comprehensive guide will be available soon.
 
 ---
 
