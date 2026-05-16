@@ -12,12 +12,12 @@ SIEM (Security Information and Event Management) platforms **collect, centralize
 
 ## Tools
 
-| Tool | Description | Platform | File |
-|------|-------------|----------|------|
-| [Splunk](./splunk.md) | Industry-leading SIEM with powerful search and dashboards | Linux / Windows / macOS | `splunk.md` |
-| [ELK Stack](./elk-stack.md) | Open-source stack: Elasticsearch + Logstash + Kibana | Linux / Windows / macOS | `elk-stack.md` |
-| [Wazuh](./wazuh.md) | Open-source SIEM and XDR platform built on ELK | Linux / Windows / macOS | `wazuh.md` |
+| Tool      | Description                                               | Platform                | File           |
+| --------- | --------------------------------------------------------- | ----------------------- | -------------- |
+| Splunk    | Industry-leading SIEM with powerful search and dashboards | Linux / Windows / macOS | `splunk.md`    |
+| ELK Stack | Open-source stack: Elasticsearch + Logstash + Kibana      | Linux / Windows / macOS | `elk-stack.md` |
+| Wazuh     | Open-source SIEM and XDR platform built on ELK            | Linux / Windows / macOS | `wazuh.md`     |
 
 ---
 
-*[← Back to main page](../_TOOLS)*
+*[← Back to main page](_TOOLS.md)*

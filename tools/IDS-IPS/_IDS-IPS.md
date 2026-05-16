@@ -12,11 +12,11 @@ Intrusion Detection and Prevention Systems monitor network traffic for **known a
 
 ## Tools
 
-| Tool | Description | Platform | File |
-|------|-------------|----------|------|
-| [Snort](./snort.md) | Classic signature-based IDS/IPS, industry standard | Linux / Windows | `snort.md` |
-| [Suricata](./suricata.md) | High-performance multi-threaded IDS/IPS with JSON logging | Linux / Windows / macOS | `suricata.md` |
+| Tool     | Description                                               | Platform                | File          |
+| -------- | --------------------------------------------------------- | ----------------------- | ------------- |
+| Snort    | Classic signature-based IDS/IPS, industry standard        | Linux / Windows         | `snort.md`    |
+| Suricata | High-performance multi-threaded IDS/IPS with JSON logging | Linux / Windows / macOS | `suricata.md` |
 
 ---
 
-*[← Back to main page](../_TOOLS)*
+*[← Back to main page](_TOOLS.md)*

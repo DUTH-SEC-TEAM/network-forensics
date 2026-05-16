@@ -14,12 +14,12 @@ The captured data is usually in `.pcap` or `.pcapng` format, or structured logs 
 
 ## Tools
 
-| Tool | Description | Platform | File |
-|------|-------------|----------|------|
-| [Zeek](./zeek.md) | Network security monitoring framework that generates structured logs | Linux / macOS | `zeek.md` |
-| [NetworkMiner](./networkminer.md) | Passive network forensic analyzer — extracts files and credentials | Linux / Windows | `networkminer.md` |
-| [ntopng](./ntopng.md) | Real-time network traffic monitoring and analysis | Linux / Windows / macOS | `ntopng.md` |
+| Tool         | Description                                                          | Platform                | File              |
+| ------------ | -------------------------------------------------------------------- | ----------------------- | ----------------- |
+| Zeek         | Network security monitoring framework that generates structured logs | Linux / macOS           | `zeek.md`         |
+| NetworkMiner | Passive network forensic analyzer — extracts files and credentials   | Linux / Windows         | `networkminer.md` |
+| ntopng       | Real-time network traffic monitoring and analysis                    | Linux / Windows / macOS | `ntopng.md`       |
 
 ---
 
-*[← Back to main page](../_TOOLS)*
+*[← Back to main page](_TOOLS.md)*
