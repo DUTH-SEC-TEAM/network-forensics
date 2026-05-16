@@ -12,12 +12,12 @@ Network forensic analysis tools are used for **deep investigation of network inc
 
 ## Tools
 
-| Tool | Description | Platform | File |
-|------|-------------|----------|------|
-| [Xplico](./xplico.md) | Reconstructs application data from pcap files (emails, HTTP, VoIP) | Linux | `xplico.md` |
-| [NetworkMiner](./networkminer.md) | Extracts files, images, and credentials from pcap files | Linux / Windows | `networkminer.md` |
-| [Wireshark](./wireshark.md) | Deep packet inspection and stream reconstruction | Linux / Windows / macOS | `wireshark.md` |
+| Tool          | Description                                                        | Platform                | File              |
+| ------------- | ------------------------------------------------------------------ | ----------------------- | ----------------- |
+| Xplico        | Reconstructs application data from pcap files (emails, HTTP, VoIP) | Linux                   | `xplico.md`       |
+| NetworkMiner  | Extracts files, images, and credentials from pcap files            | Linux / Windows         | `networkminer.md` |
+| [[Wireshark]] | Deep packet inspection and stream reconstruction                   | Linux / Windows / macOS | `wireshark.md`    |
 
 ---
 
-*[← Back to main page](../_TOOLS)*
+*[← Back to main page](_TOOLS.md)*

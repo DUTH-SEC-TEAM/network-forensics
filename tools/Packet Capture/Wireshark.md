@@ -4,15 +4,15 @@
 
 # Metadata
 
-|Field|Value|
-|---|---|
-|**Category**|`network-forensics / traffic-analysis`|
-|**Platform**|Linux / Windows / macOS|
-|**Language**|C|
-|**License**|GPL-2.0 (GPLv2)|
-|**Version**|4.0.17 (latest)|
-|**Authors**|@T-Konstantinos|
-|**Last updated**|05-05-2026|
+| Field            | Value                                  |
+| ---------------- | -------------------------------------- |
+| **Category**     | `network-forensics / traffic-analysis` |
+| **Platform**     | Linux / Windows / macOS                |
+| **Language**     | C                                      |
+| **License**      | GPL-2.0 (GPLv2)                        |
+| **Version**      | 4.0.17 (latest)                        |
+| **Authors**      | @T-Konstantinos                        |
+| **Last updated** | 05-05-2026                             |
 
 ---
 
@@ -84,46 +84,46 @@ The `any` / `all` modifiers apply to fields that appear multiple times in a pack
 
 #### Priority
 
-|Priority|Operator|Example|
-|---|---|---|
-|1 (highest)|`@` At operator|`@browser.comment`|
-|2|`#` Layer operator|`ip.addr#2`|
-|3|`[]` Slice operator|`eth.src[0:3]`|
-|4|`{}` Arithmetic grouping|`{tcp.srcport + 3}`|
-|5|`*` `/` `%` Multiply / Divide / Modulo|`frame.len * 2`|
-|6|`+` `-` Addition / Subtraction|`frame.len - 54`|
-|7|`&` Bitwise AND|`tcp.flags & 0x02`|
-|8|`in` Membership|`tcp.port in {80,443}`|
-|9|`==` `!=` `>` `<` `>=` `<=` Comparison|`frame.len > 1000`|
-|10|`contains` `matches` Search & Match|`http contains "pass"`|
-|11|`all` `any` Modifiers|`all ip.addr != 1.1.1.1`|
-|12|`!` `not` Logical NOT|`!arp`|
-|13|`&&` `and` Logical AND|`ip && tcp`|
-|14|`^^` `xor` Logical XOR|`ip ^^ tcp`|
-|15 (lowest)|`\|` `or` Logical OR|`dns or icmp`|
+| Priority    | Operator                               | Example                  |
+| ----------- | -------------------------------------- | ------------------------ |
+| 1 (highest) | `@` At operator                        | `@browser.comment`       |
+| 2           | `#` Layer operator                     | `ip.addr#2`              |
+| 3           | `[]` Slice operator                    | `eth.src[0:3]`           |
+| 4           | `{}` Arithmetic grouping               | `{tcp.srcport + 3}`      |
+| 5           | `*` `/` `%` Multiply / Divide / Modulo | `frame.len * 2`          |
+| 6           | `+` `-` Addition / Subtraction         | `frame.len - 54`         |
+| 7           | `&` Bitwise AND                        | `tcp.flags & 0x02`       |
+| 8           | `in` Membership                        | `tcp.port in {80,443}`   |
+| 9           | `==` `!=` `>` `<` `>=` `<=` Comparison | `frame.len > 1000`       |
+| 10          | `contains` `matches` Search & Match    | `http contains "pass"`   |
+| 11          | `all` `any` Modifiers                  | `all ip.addr != 1.1.1.1` |
+| 12          | `!` `not` Logical NOT                  | `!arp`                   |
+| 13          | `&&` `and` Logical AND                 | `ip && tcp`              |
+| 14          | `^^` `xor` Logical XOR                 | `ip ^^ tcp`              |
+| 15 (lowest) | `\|` `or` Logical OR                   | `dns or icmp`            |
 
 #### Comparison Operators
 
-|Operator|Symbol|Example|
-|---|---|---|
-|Equal|`eq, ==`|`ip.addr == 10.0.0.1`|
-|Not Equal|`ne, !=`|`tcp.port != 443`|
-|Greater Than|`gt, >`|`frame.len > 1000`|
-|Less Than|`lt, <`|`ip.ttl < 10`|
-|Greater than or Equal to|`ge, >=`|`frame.len >= 1000`|
-|Less than or Equal to|`le, <=`|`frame.len <= 1000`|
+| Operator                 | Symbol   | Example               |
+| ------------------------ | -------- | --------------------- |
+| Equal                    | `eq, ==` | `ip.addr == 10.0.0.1` |
+| Not Equal                | `ne, !=` | `tcp.port != 443`     |
+| Greater Than             | `gt, >`  | `frame.len > 1000`    |
+| Less Than                | `lt, <`  | `ip.ttl < 10`         |
+| Greater than or Equal to | `ge, >=` | `frame.len >= 1000`   |
+| Less than or Equal to    | `le, <=` | `frame.len <= 1000`   |
 
 #### Arithmetic Operators
 
 Allow you to perform **mathematical operations inside a filter** — instead of comparing against fixed values, you compare fields against each other with a calculation.
 
-|Operator|Operation|Example|
-|---|---|---|
-|`+`|Addition|`udp.dstport >= udp.srcport + 1`|
-|`-`|Subtraction|`frame.len - 20 > 100`|
-|`*`|Multiplication|`tcp.dstport >= 4 * {tcp.srcport + 3}`|
-|`/`|Division|`frame.len / 2 > 500`|
-|`%`|Modulo|`frame.number % 2 == 0`|
+| Operator | Operation      | Example                                |
+| -------- | -------------- | -------------------------------------- |
+| `+`      | Addition       | `udp.dstport >= udp.srcport + 1`       |
+| `-`      | Subtraction    | `frame.len - 20 > 100`                 |
+| `*`      | Multiplication | `tcp.dstport >= 4 * {tcp.srcport + 3}` |
+| `/`      | Division       | `frame.len / 2 > 500`                  |
+| `%`      | Modulo         | `frame.number % 2 == 0`                |
 
 > [!warning] **Use `{}` for grouping, not `()`:**
 > 
@@ -523,29 +523,9 @@ len(dns.qry.name) > 40
 count(dns.a) > 5
 ```
 
-#### IP Functions
-
-|Function|Description|
-|---|---|
-|`ip_rfc1918(ip)`|True if the IPv4 address is private (RFC 1918)|
-|`ip_linklocal(ip)`|True if the IPv4/IPv6 address is link-local|
-|`ip_multicast(ip)`|True if the IPv4/IPv6 address is multicast|
-|`ip_ula(ipv6)`|True if the IPv6 address is unique-local (RFC 4193)|
-|`ip_special_name(ip)`|Returns the name of the special-purpose block|
-|`ip_special_mask(ip)`|Returns the flags mask (S/D/F/G/R bits)|
-
-```
-# Internal traffic only
-ip_rfc1918(ip.src)
-
-# External traffic (non-private)
-!ip_rfc1918(ip.dst)
-
-# Multicast destination
-ip_multicast(ip.dst)
-```
 
 ---
+
 ## Capture Filters
 
 > Applied **before** capture. Configured in the initial window before clicking Capture. Traffic that does not match is not captured at all.
@@ -560,7 +540,7 @@ The general format is:
 
 > BPF — Berkeley Packet Filter
 
----
+
 
 #### 1. Type — What you are looking for
 
@@ -571,8 +551,6 @@ The general format is:
 |`port`|`port 80`|
 |`portrange`|`portrange 80-443`|
 
----
-
 #### 2. Direction — From/To where
 
 |Direction|Example|
@@ -580,8 +558,6 @@ The general format is:
 |`src`|`src host 10.0.0.1`|
 |`dst`|`dst port 443`|
 |_(none)_|both src and dst|
-
----
 
 ### Combined Examples
 
@@ -608,11 +584,10 @@ not port 22
 port 53 and (tcp or udp)
 ```
 
----
 
 ### Capture vs Display Filter Comparison
 
-||Capture Filter|Display Filter|
+| |Capture Filter|Display Filter|
 |---|---|---|
 |**When**|Before capture|After capture|
 |**Syntax**|BPF|Wireshark syntax|
@@ -620,8 +595,8 @@ port 53 and (tcp or udp)
 
 > **Remember:** Capture Filters use **BPF syntax** — different from Display Filters. You do not write `ip.addr ==` here, you write `host`.
 
----
-
+### Macros
+%% not studied  %%
 ## Statistics
 
 > _COMING SOON_
