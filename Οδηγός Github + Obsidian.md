@@ -33,18 +33,17 @@ sudo apt install git
 brew install git
 ```
 
-
-
 ## Βήμα 2: Δημιουργία SSH Key
+
+> [!important] Αν έχεις ήδη προσωπικό SSH key για το GitHub, **μην το χρησιμοποιήσεις εδώ**. Δημιούργησε ένα ξεχωριστό key αποκλειστικά για τον οργανισμό DUTH-SEC-TEAM, όπως δείχνει το βήμα παρακάτω. Στο επόμενο βήμα (SSH Config) θα ρυθμίσουμε το σύστημα ώστε να χρησιμοποιεί το σωστό key για κάθε περίπτωση, χωρίς να μπερδεύονται τα δύο.
 
 ### Linux / Mac
 
 ```bash
-ssh-keygen -t ed25519 -C "το_email_σου@gmail.com" -f /.ssh/id_ed25519_github_team
+ssh-keygen -t ed25519 -C "το_email_σου@gmail.com" -f ~/.ssh/id_ed25519_github_team
 ```
 
-- Όταν ρωτάει **passphrase**: πάτα Enter (κενό)
-	 Είναι σαν κωδικός που θα χρειάζεται να βάζεις κάθε φορά που κάνεις push/pull (αλληλεπιδράς με το github)
+- Όταν ρωτάει **passphrase**: πάτα Enter (κενό) Είναι σαν κωδικός που θα χρειάζεται να βάζεις κάθε φορά που κάνεις push/pull (αλληλεπιδράς με το github)
 
 Αντέγραψε το public key:
 
@@ -62,8 +61,7 @@ ssh-keygen -t ed25519 -C "to_email_sou@gmail.com" -f ~/.ssh/id_ed25519_github_te
 ssh-keygen -t ed25519 -C "to_email_sou@gmail.com" -f "$HOME\.ssh\id_ed25519_github_team"
 ```
 
-- Όταν ρωτάει **passphrase**: πάτα Enter (κενό)
-	 Είναι σαν κωδικός που θα χρειάζεται να βάζεις κάθε φορά που κάνεις push/pull (αλληλεπιδράς με το github)
+- Όταν ρωτάει **passphrase**: πάτα Enter (κενό) Είναι σαν κωδικός που θα χρειάζεται να βάζεις κάθε φορά που κάνεις push/pull (αλληλεπιδράς με το github)
 
 Αντέγραψε το public key:
 
@@ -75,55 +73,85 @@ cat ~/.ssh/id_ed25519_github_team.pub
 Get-Content "$HOME\.ssh\id_ed25519_github_team.pub"
 ```
 
+## Βήμα 3: Ρύθμιση SSH Config
 
-## Βήμα 3: Προσθήκη SSH Key στο GitHub
+Επειδή το key δεν έχει το προεπιλεγμένο όνομα (και επειδή μπορεί να έχεις ήδη κάποιο **άλλο** προσωπικό key για το GitHub), πρέπει να πούμε ρητά στο SSH ποιο key να χρησιμοποιεί όταν δουλεύεις με τον οργανισμό DUTH-SEC-TEAM — χωρίς να πειράξουμε τυχόν υπάρχουσα προσωπική σου ρύθμιση.
+
+Αυτό γίνεται με ένα **ξεχωριστό host alias**: ένα ψευδώνυμο που το SSH αναγνωρίζει σαν να είναι hostname, αλλά στην ουσία δείχνει στο `github.com` — χρησιμοποιώντας όμως το δικό του συγκεκριμένο key.
+
+### Linux / Mac
+
+Άνοιξε (ή δημιούργησε αν δεν υπάρχει) το αρχείο `~/.ssh/config`:
+
+```bash
+nano ~/.ssh/config
+```
+
+Πρόσθεσε στο τέλος:
+
+```
+Host github-duth-team
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_github_team
+    IdentitiesOnly yes
+```
+
+### Windows
+
+Άνοιξε (ή δημιούργησε) το αρχείο `C:\Users\Username\.ssh\config` (π.χ. με Notepad):
+
+```
+Host github-duth-team
+    HostName github.com
+    User git
+    IdentityFile C:/Users/Username/.ssh/id_ed25519_github_team
+    IdentitiesOnly yes
+```
+
+> [!warning] Χρησιμοποίησε **forward slashes** (`/`) στο path, ακόμα και στα Windows.
+
+> [!important] Αν έχεις **ήδη** ένα `Host github.com` block στο config σου (π.χ. από προσωπικό key), μην το πειράξεις — άφησέ το ως έχει και απλά πρόσθεσε το `Host github-duth-team` block ως ξεχωριστή, νέα καταχώρηση.
+
+Από εδώ και πέρα, **παντού** που θα αναφέρεται `github.com` σε σχέση με τον οργανισμό (clone URLs, remote URLs), θα χρησιμοποιούμε το alias `github-duth-team` αντί για το `github.com`.
+
+## Βήμα 4: Προσθήκη SSH Key στο GitHub
 
 1. Πήγαινε στο **GitHub → User navigation Menu (το icon σου πάνω δεξιά) → Settings → SSH and GPG keys**
 2. Πάτα **New SSH key**
 3. **Title:** `DUTH-TEAM`
 4. **Key type:** `Authentication Key`
-5. **Key:** επικόλλησε το output από το προηγούμενο βήμα
+5. **Key:** επικόλλησε το output από το Βήμα 2
 6. Πάτα **Add SSH key**
 
 ### Επαλήθευση σύνδεσης
 
-#### Linux
+Χρησιμοποίησε το **alias** που ρύθμισες στο Βήμα 3 — δεν χρειάζεται πια `-i` flag, αφού το config το χειρίζεται αυτόματα:
 
 ```bash
-ssh -T git@github.com -i ~/.ssh/id_ed25519_github_team
+ssh -T git@github-duth-team
 ```
-
-#### Windows
-##### SSH
-
-```Shell
-ssh -T git@github.com -i C:/Users/[username]/.ssh/id_ed25519_github_team
-```
-
-
 
 **Σωστό αποτέλεσμα:** `Hi [username]! You've successfully authenticated, but GitHub does not provide shell access.`
 
-## Βήμα 4: Clone του Repository
+> [!warning] Αν δοκιμάσεις `ssh -T git@github.com` (χωρίς το alias), το SSH θα προσπαθήσει με το default/προσωπικό σου key, όχι με το key του οργανισμού — και πιθανόν να αποτύχει ή να συνδεθεί με λάθος λογαριασμό. Χρησιμοποίησε πάντα το alias για δουλειά με το DUTH-SEC-TEAM.
 
-Δημιούργησε έναν φάκελο για το vault και κάνε clone:
+## Βήμα 5: Clone του Repository
 
-> [!warning]
-> Τα paths είναι ενδεικτικά — προσαρμόστε τα ανάλογα με τη δομή φακέλων του συστήματός σας.
+Δημιούργησε έναν φάκελο για το vault και κάνε clone, χρησιμοποιώντας το alias:
 
-### Windows
+> [!warning] Τα paths είναι ενδεικτικά — προσαρμόστε τα ανάλογα με τη δομή φακέλων του συστήματός σας.
 
-```bash
+### Windows (PowerShell)
+
+```powershell
 # Αντικατέστησε το REPO_NAME με το repo της ομάδας σου:
 # network-forensics / vulnerability-exploitation / web-security
 
-mkdir -p C:\Users\Username\DUTH-TEAM\REPO_NAME
-cd C:\Users\Username\DUTH-TEAM\REPO_NAME
-git init
-git remote add origin git@github.com:DUTH-SEC-TEAM/REPO_NAME.git
-git pull origin main
-git branch -M main
-git branch --set-upstream-to=origin/main main
+New-Item -ItemType Directory -Force -Path C:\Users\Username\DUTH-TEAM
+cd C:\Users\Username\DUTH-TEAM
+git clone git@github-duth-team:DUTH-SEC-TEAM/REPO_NAME.git
+cd REPO_NAME
 ```
 
 ### Linux / Mac
@@ -132,20 +160,20 @@ git branch --set-upstream-to=origin/main main
 # Αντικατέστησε το REPO_NAME με το repo της ομάδας σου:
 # network-forensics / vulnerability-exploitation / web-security
 
-mkdir -p ~/DUTH-TEAM/REPO_NAME
-cd ~/DUTH-TEAM/REPO_NAME
-git init
-git remote add origin git@github.com:DUTH-SEC-TEAM/REPO_NAME.git
-git pull origin main
-git branch -M main
-git branch --set-upstream-to=origin/main main
+mkdir -p ~/DUTH-TEAM
+cd ~/DUTH-TEAM
+git clone git@github-duth-team:DUTH-SEC-TEAM/REPO_NAME.git
+cd REPO_NAME
 ```
 
-## Βήμα 5: Βασικές Ρυθμίσεις Git
+> [!important] Παρατήρησε: μόνο το κομμάτι πριν το `:` άλλαξε (`github.com` → `github-duth-team`). Το path του repo (`DUTH-SEC-TEAM/REPO_NAME.git`) μένει ίδιο.
+
+## Βήμα 6: Βασικές Ρυθμίσεις Git
 
 ### Τα στοιχεία σου
 
 #### Αν θέλετε να ρυθμίσετε τα στοιχεία σας μια φορά:
+
 ```bash
 git config --global user.name "Το Όνομά σου"
 git config --global user.email "email@example.com"
@@ -154,6 +182,7 @@ git config --global user.email "email@example.com"
 > Έτσι δηλώνετε user_name & email για κάθε git σύνδεση που θα κάνετε σε οποιοδήποτε repository (σημείο στο σύστημα σας).
 
 #### Αν θέλετε να ρυθμίσετε τα στοιχεία σας μόνο για το συγκεκριμένο repository:
+
 ```bash
 git config user.name "Το Όνομά σου"
 git config user.email "email@example.com"
@@ -170,31 +199,33 @@ git commit -m "Add .obsidian to gitignore"
 git push origin main
 ```
 
-> Προσθέτοντας το `.obsidian` στο  `.gitignore` λες στο **github** όταν θα κάνω push περιεχόμενο μην λάβεις υπόψη το  `.obsidian`
+> Προσθέτοντας το `.obsidian` στο `.gitignore` λες στο **github** όταν θα κάνω push περιεχόμενο μην λάβεις υπόψη το `.obsidian`
 
-## Βήμα 6: Άνοιγμα ως Obsidian Vault
+## Βήμα 7: Άνοιγμα ως Obsidian Vault
 
 1. Άνοιξε το **Obsidian**
 2. **Open another vault → Open folder as vault**
 3. Επιλογή Φακέλου
-	-  Windows ->   `C:\Users\Username\DUTH-TEAM\REPO_NAME
-	- Linux / Mac -> `~/DUTH-TEAM/REPO_NAME`
+    - Windows -> `C:\Users\Username\DUTH-TEAM\REPO_NAME`
+    - Linux / Mac -> `~/DUTH-TEAM/REPO_NAME`
 
-## Βήμα 7: Εγκατάσταση  Git Plugin
+## Βήμα 8: Εγκατάσταση Git Plugin
 
 1. **Settings → Community plugins → Turn on community plugins**
 2. **Browse → αναζήτησε "Git" → Install → Enable**
 3. Ρυθμίσεις plugin:
 
-| Ρύθμιση                 | Τιμή                                                                        |
-| ----------------------- | --------------------------------------------------------------------------- |
-| Auto pull interval      | `10`                                                                        |
-| Pull  on startup        | On                                                                          |
-| Push on commit-and-sync | On                                                                          |
-| Pull on commit-and-sync | On                                                                          |
-| Author name             | Το όνομά σου                                                                |
-| Author email            | Το email σου                                                                |
-| Custom Git binary path  | Linux/Mac ->`/usr/bin/git` <br>Windows ->`C:\Program Files\Git\bin\git.exe` |
+|Ρύθμιση|Τιμή|
+|---|---|
+|Auto pull interval|`10`|
+|Pull on startup|On|
+|Push on commit-and-sync|On|
+|Pull on commit-and-sync|On|
+|Author name|Το όνομά σου|
+|Author email|Το email σου|
+|Custom Git binary path|Linux/Mac ->`/usr/bin/git` <br>Windows ->`C:\Program Files\Git\bin\git.exe`|
+
+> [!important] Το Obsidian Git plugin δεν χρειάζεται καμία επιπλέον ρύθμιση για το SSH key — διαβάζει αυτόματα το `origin` URL που ήδη ρυθμίστηκε σωστά στο Βήμα 5 (με το alias `github-duth-team`), οπότε λειτουργεί διαφανώς.
 
 # Workflows
 
@@ -210,12 +241,12 @@ git push origin main
 
 ### Βήμα 1: Δημιούργησε νέο branch
 
-> **Γιατί;** Ποτέ μην δουλεύεις απευθείας στο `main`. 
-> Κάθε αλλαγή γίνεται σε ξεχωριστό branch.
+> **Γιατί;** Ποτέ μην δουλεύεις απευθείας στο `main`. Κάθε αλλαγή γίνεται σε ξεχωριστό branch.
 
 `Ctrl+P` → `Git: Create new branch` → δώσε περιγραφικό όνομα
 
 Παραδείγματα καλών ονομάτων:
+
 - `fix/typo-metasploitable2-tool`
 - `add/new-tool-nmap`
 - `update/readme`
@@ -231,7 +262,7 @@ git push origin main
 Παραδείγματα καλών μηνυμάτων:
 
 - `Διόρθωση τυπογραφικών λαθών`
-- `Προσθήκη οδηγιών εγκατάστασης και χρήσης εργαλείου nmap `
+- `Προσθήκη οδηγιών εγκατάστασης και χρήσης εργαλείου nmap`
 - `Ενημέρωση του readme file - Προσθήκη link εργαλείου`
 
 ### Βήμα 4: Push
@@ -303,6 +334,18 @@ git branch --set-upstream-to=origin/main main
 git push origin HEAD
 ```
 
+## "Permission denied (publickey)" σε clone/pull/push
+
+Πιθανότατα το SSH config (Βήμα 3) δεν έχει ρυθμιστεί σωστά, ή χρησιμοποίησες `github.com` αντί για το alias `github-duth-team` στο remote URL. Έλεγξε:
+
+```bash
+# Δες το τρέχον remote URL
+git remote -v
+
+# Αν δείχνει github.com αντί για github-duth-team, διόρθωσέ το:
+git remote set-url origin git@github-duth-team:DUTH-SEC-TEAM/REPO_NAME.git
+```
+
 ## Το Obsidian Git δείχνει "Git is not ready"
 
 Βάλε το path του git στις ρυθμίσεις:
@@ -311,11 +354,13 @@ git push origin HEAD
 - Windows: `C:\Program Files\Git\bin\git.exe`
 
 ---
+
 ## Βοήθεια
 
 Αν αντιμετωπίσεις πρόβλημα επικοινώνησε με τον Team Leader σου.
 
 > [!important]
+> 
 > - **Ποτέ** μην κάνεις direct push στο `main`
 > - Κάθε αλλαγή γίνεται μέσω **νέου branch + Pull Request**
 > - **Περιγραφικά** ονόματα branches και commit messages
@@ -323,3 +368,4 @@ git push origin HEAD
 > - Οι αλλαγές εμφανίζονται αυτόματα κάθε **10 λεπτά** (auto-pull)
 > - Για να δεις αλλαγές αμέσως: `Ctrl+P` → `Git: Pull`
 > - **Κάνε pull** πριν ξεκινήσεις δουλειά για να έχεις τις τελευταίες αλλαγές
+> - Χρησιμοποίησε πάντα το SSH alias `github-duth-team` (όχι `github.com`) για δουλειά με τον οργανισμό
