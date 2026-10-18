@@ -215,15 +215,15 @@ git push origin main
 2. **Browse → αναζήτησε "Git" → Install → Enable**
 3. Ρυθμίσεις plugin:
 
-|Ρύθμιση|Τιμή|
-|---|---|
-|Auto pull interval|`10`|
-|Pull on startup|On|
-|Push on commit-and-sync|On|
-|Pull on commit-and-sync|On|
-|Author name|Το όνομά σου|
-|Author email|Το email σου|
-|Custom Git binary path|Linux/Mac ->`/usr/bin/git` <br>Windows ->`C:\Program Files\Git\bin\git.exe`|
+| Ρύθμιση                 | Τιμή                                                                        |
+| ----------------------- | --------------------------------------------------------------------------- |
+| Auto pull interval      | `10`                                                                        |
+| Pull on startup         | On                                                                          |
+| Push on commit-and-sync | On                                                                          |
+| Pull on commit-and-sync | On                                                                          |
+| Author name             | Το όνομά σου                                                                |
+| Author email            | Το email σου                                                                |
+| Custom Git binary path  | Linux/Mac ->`/usr/bin/git` <br>Windows ->`C:\Program Files\Git\bin\git.exe` |
 
 > [!important] Το Obsidian Git plugin δεν χρειάζεται καμία επιπλέον ρύθμιση για το SSH key — διαβάζει αυτόματα το `origin` URL που ήδη ρυθμίστηκε σωστά στο Βήμα 5 (με το alias `github-duth-team`), οπότε λειτουργεί διαφανώς.
 

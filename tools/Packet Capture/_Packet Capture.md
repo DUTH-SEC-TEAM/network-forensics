@@ -16,7 +16,7 @@ Packet capture tools allow us to **record raw network traffic** passing through 
 | ------------- | ------------------------------------- | ------------------- | -------------- |
 | [[Wireshark]] | GUI-based packet capture and analyzer | Win / Linux / macOS | `wireshark.md` |
 | [[tcpdump]]   | Lightweight CLI packet capture tool   | Linux / macOS       | `tcpdump.md`   |
-| tshark        | Command-line version of Wireshark     | Win / Linux / macOS | `tshark.md`    |
+| [[Tshark]]    | Command-line version of Wireshark     | Win / Linux / macOS | `tshark.md`    |
 
 *[← Back to main page](_TOOLS.md)*
 

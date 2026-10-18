@@ -16,7 +16,7 @@ The captured data is usually in `.pcap` or `.pcapng` format, or structured logs 
 
 | Tool         | Description                                                          | Platform                | File              |
 | ------------ | -------------------------------------------------------------------- | ----------------------- | ----------------- |
-| Zeek         | Network security monitoring framework that generates structured logs | Linux / macOS           | `zeek.md`         |
+| [[Zeek]]     | Network security monitoring framework that generates structured logs | Linux / macOS           | `zeek.md`         |
 | NetworkMiner | Passive network forensic analyzer — extracts files and credentials   | Linux / Windows         | `networkminer.md` |
 | ntopng       | Real-time network traffic monitoring and analysis                    | Linux / Windows / macOS | `ntopng.md`       |
 
